@@ -18,6 +18,8 @@
 		4A86A2731EE9468F00277BC6 /* ProductCatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A86A2721EE9468F00277BC6 /* ProductCatalogTests.swift */; };
 		4A86A2751EE949EA00277BC6 /* Basket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A86A2741EE949EA00277BC6 /* Basket.swift */; };
 		4A86A2771EE94DAA00277BC6 /* BasketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A86A2761EE94DAA00277BC6 /* BasketTests.swift */; };
+		4A86A2791EE952AF00277BC6 /* OrderingScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A86A2781EE952AF00277BC6 /* OrderingScene.swift */; };
+		4A86A27B1EE9565100277BC6 /* OrderingSceneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A86A27A1EE9565100277BC6 /* OrderingSceneTests.swift */; };
 		6801C11811D78C0F911AB4BC /* Pods_ShoppingBasket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F54811F273685284E44223C8 /* Pods_ShoppingBasket.framework */; };
 		95B092FFE7168BFEEA5A5FCF /* Pods_ShoppingBasketTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CACE6DF4078EF3E65DD1E71 /* Pods_ShoppingBasketTests.framework */; };
 /* End PBXBuildFile section */
@@ -50,6 +52,8 @@
 		4A86A2721EE9468F00277BC6 /* ProductCatalogTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCatalogTests.swift; sourceTree = "<group>"; };
 		4A86A2741EE949EA00277BC6 /* Basket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Basket.swift; sourceTree = "<group>"; };
 		4A86A2761EE94DAA00277BC6 /* BasketTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasketTests.swift; sourceTree = "<group>"; };
+		4A86A2781EE952AF00277BC6 /* OrderingScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderingScene.swift; sourceTree = "<group>"; };
+		4A86A27A1EE9565100277BC6 /* OrderingSceneTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderingSceneTests.swift; sourceTree = "<group>"; };
 		5239662403AA9CB2AC080738 /* Pods-ShoppingBasket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingBasket.release.xcconfig"; path = "../Pods/Target Support Files/Pods-ShoppingBasket/Pods-ShoppingBasket.release.xcconfig"; sourceTree = "<group>"; };
 		5AF024D1E1072E28198B62D7 /* Pods-ShoppingBasketTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingBasketTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-ShoppingBasketTests/Pods-ShoppingBasketTests.release.xcconfig"; sourceTree = "<group>"; };
 		69AEC459B3A3D49161BA7777 /* Pods-ShoppingBasketTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingBasketTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-ShoppingBasketTests/Pods-ShoppingBasketTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -117,6 +121,7 @@
 				4A5A75AC1EE93F7600ECD2CB /* Assets.xcassets */,
 				4A5A75AE1EE93F7600ECD2CB /* LaunchScreen.storyboard */,
 				4A5A75B11EE93F7600ECD2CB /* Info.plist */,
+				4A86A2781EE952AF00277BC6 /* OrderingScene.swift */,
 			);
 			path = ShoppingBasket;
 			sourceTree = "<group>";
@@ -128,6 +133,7 @@
 				4A86A2701EE9455700277BC6 /* ProductTests.swift */,
 				4A86A2721EE9468F00277BC6 /* ProductCatalogTests.swift */,
 				4A86A2761EE94DAA00277BC6 /* BasketTests.swift */,
+				4A86A27A1EE9565100277BC6 /* OrderingSceneTests.swift */,
 			);
 			path = ShoppingBasketTests;
 			sourceTree = "<group>";
@@ -356,6 +362,7 @@
 			files = (
 				4A5A75A81EE93F7600ECD2CB /* ViewController.swift in Sources */,
 				4A86A26D1EE9433800277BC6 /* Product.swift in Sources */,
+				4A86A2791EE952AF00277BC6 /* OrderingScene.swift in Sources */,
 				4A5A75A61EE93F7600ECD2CB /* AppDelegate.swift in Sources */,
 				4A86A26F1EE943E400277BC6 /* ProductCatalog.swift in Sources */,
 				4A86A2751EE949EA00277BC6 /* Basket.swift in Sources */,
@@ -368,6 +375,7 @@
 			files = (
 				4A86A2711EE9455700277BC6 /* ProductTests.swift in Sources */,
 				4A86A2771EE94DAA00277BC6 /* BasketTests.swift in Sources */,
+				4A86A27B1EE9565100277BC6 /* OrderingSceneTests.swift in Sources */,
 				4A86A2731EE9468F00277BC6 /* ProductCatalogTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
