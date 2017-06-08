@@ -10,9 +10,20 @@ import UIKit
 
 class OrderingViewController: UITableViewController {
 
+    private let totalTextTemplate = "Total: %d"
+    private let totalLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 21))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        //Text
+        totalLabel.backgroundColor = .clear
+        self.toolbarItems = [UIBarButtonItem(customView: totalLabel)]
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        totalLabel.text = String(format: totalTextTemplate, 0)
     }
     
     override func didReceiveMemoryWarning() {
