@@ -10,8 +10,8 @@ import UIKit
 
 class OrderingViewController: UITableViewController {
 
-    private let totalTextTemplate = "Total: %d"
-    private let totalLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 21))
+    let totalTextTemplate = "Total: %@"
+    let totalLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 21))
    
     var presenter : OrderingPresenter! {
         didSet {
@@ -29,7 +29,7 @@ class OrderingViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        totalLabel.text = String(format: totalTextTemplate, 0)
+        totalLabel.text = String(format: totalTextTemplate, presenter.total)
     }
     
     override func didReceiveMemoryWarning() {
@@ -84,6 +84,7 @@ extension OrderingViewController : OrderingView {
     func reloadData() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
+            self.totalLabel.text = String(format: self.totalTextTemplate, self.presenter.total)
         }
     }
 }

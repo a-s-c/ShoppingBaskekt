@@ -23,7 +23,11 @@ class OrderingPresenter: NSObject {
     
     private let orderingScene: OrderingScene
     
-    public weak var view: OrderingView?
+    weak var view: OrderingView?
+    
+    var total: String {
+        return String(format: "$: %.2f", orderingScene.total)
+    }
     
     init(orderingScene: OrderingScene) {
         self.orderingScene = orderingScene
