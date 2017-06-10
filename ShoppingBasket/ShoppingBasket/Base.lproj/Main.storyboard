@@ -149,12 +149,48 @@
                             <outlet property="delegate" destination="Sr7-Vd-FNz" id="3Pq-yj-Dv4"/>
                         </connections>
                     </tableView>
-                    <toolbarItems/>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="nBd-65-RHW"/>
+                        <barButtonItem title="Checkout" id="Nnf-Ho-hfs">
+                            <connections>
+                                <segue destination="cmq-HU-LCn" kind="show" id="YLF-oQ-jho"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Ordering" id="7Ww-PF-iBe"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b7r-hw-Ntj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="984.79999999999995" y="-161.46926536731635"/>
+        </scene>
+        <!--Select a currency-->
+        <scene sceneID="96t-LU-Ebz">
+            <objects>
+                <tableViewController id="cmq-HU-LCn" customClass="CurrencyViewController" customModule="ShoppingBasket" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="udk-wV-kbm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CurrencyItemCell" id="2M8-h8-Py5">
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2M8-h8-Py5" id="jTE-aW-Xie">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="cmq-HU-LCn" id="NbP-NO-eY6"/>
+                            <outlet property="delegate" destination="cmq-HU-LCn" id="xRr-Qs-hio"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Select a currency" id="leV-CD-TZb"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z7X-ff-nTd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1977" y="-161"/>
         </scene>
     </scenes>
 </document>

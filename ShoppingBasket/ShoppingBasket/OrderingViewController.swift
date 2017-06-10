@@ -22,9 +22,8 @@ class OrderingViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        //Text
         totalLabel.backgroundColor = .clear
-        self.toolbarItems = [UIBarButtonItem(customView: totalLabel)]
+        self.toolbarItems?.insert(UIBarButtonItem(customView: totalLabel), at: 0)
         
     }
     
