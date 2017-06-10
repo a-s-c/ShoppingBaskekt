@@ -12,6 +12,12 @@ class OrderingViewController: UITableViewController {
 
     private let totalTextTemplate = "Total: %d"
     private let totalLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 21))
+   
+    var presenter : OrderingPresenter! {
+        didSet {
+            presenter.view = self
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,4 +105,7 @@ class OrderingViewController: UITableViewController {
     }
     */
 
+}
+
+extension OrderingViewController : OrderingView {
 }
