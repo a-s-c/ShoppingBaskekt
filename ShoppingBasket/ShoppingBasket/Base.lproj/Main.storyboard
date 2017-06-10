@@ -86,6 +86,9 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <state key="normal" title="+"/>
+                                                    <connections>
+                                                        <action selector="addTap:" destination="eTs-vG-wSW" eventType="touchUpInside" id="c1Z-H5-a8V"/>
+                                                    </connections>
                                                 </button>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="38J-ul-bla">
                                                     <rect key="frame" x="28" y="14" width="50" height="30"/>
@@ -104,6 +107,9 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <state key="normal" title="-"/>
+                                                    <connections>
+                                                        <action selector="removeTap:" destination="eTs-vG-wSW" eventType="touchUpInside" id="fNG-aj-MJq"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

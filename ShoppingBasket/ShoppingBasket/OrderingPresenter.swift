@@ -9,7 +9,7 @@
 import UIKit
 
 protocol OrderingView: class {
-    
+    func reloadData()
 }
 
 class OrderingPresenter: NSObject {
@@ -42,5 +42,17 @@ class OrderingPresenter: NSObject {
         let price = String(format: "$ %.2f", product.price)
         let quantity = String(format: "%d", product.quantity)
         return ProductData(name: product.name, price: price, unit: product.unit, quantity: quantity)
+    }
+    
+    public func addTappedForRowAt(in row: Int) {
+        let product = orderingScene.productItems[row]
+        orderingScene.add(productItem: product)
+        view?.reloadData()
+    }
+    
+    public func removeTappedForRowAt(in row: Int) {
+        let product = orderingScene.productItems[row]
+        orderingScene.remove(productItem: product)
+        view?.reloadData()
     }
 }

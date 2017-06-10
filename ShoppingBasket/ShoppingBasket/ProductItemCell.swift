@@ -10,10 +10,15 @@ import UIKit
 
 class ProductItemCell: UITableViewCell {
 
+    typealias DidTapButton = (UITableViewCell) -> ()
+    
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var unit: UILabel!
     @IBOutlet weak var quantity: UITextField!
+    
+    var addTapHandler: DidTapButton?
+    var removeTapHandler: DidTapButton?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,5 +30,12 @@ class ProductItemCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    @IBAction func addTap(_ sender: Any) {
+        addTapHandler?(self)
+    }
 
+    @IBAction func removeTap(_ sender: Any) {
+        removeTapHandler?(self)
+    }
 }

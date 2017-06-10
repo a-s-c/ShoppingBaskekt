@@ -56,14 +56,34 @@ class OrderingViewController: UITableViewController {
         productItemCell.price.text = productData.price
         productItemCell.unit.text = productData.unit
         productItemCell.quantity.text = productData.quantity
-        
+        productItemCell.addTapHandler = didAddTapped
+        productItemCell.removeTapHandler = didRemoveTapped
         return productItemCell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 54
     }
+    
+    func didAddTapped(sender: UITableViewCell) {
+        if let index = self.tableView.indexPath(for: sender)?.row {
+            presenter.addTappedForRowAt(in: index)
+        }
+    }
+    
+    func didRemoveTapped(sender: UITableViewCell) {
+        if let index = self.tableView.indexPath(for: sender)?.row {
+            presenter.removeTappedForRowAt(in: index)
+        }
+    }
+    
+       
 }
 
 extension OrderingViewController : OrderingView {
+    func reloadData() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
 }
