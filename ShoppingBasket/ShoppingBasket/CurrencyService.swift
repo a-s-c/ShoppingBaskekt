@@ -6,68 +6,76 @@
 //  Copyright © 2017 Alexander Schacht. All rights reserved.
 //
 
-import UIKit
+import Foundation
+import Alamofire
 
 class CurrencyService: NSObject {
-    
-    typealias ExchangeRateHandler = ((Float?, NSError?) -> ())
-    typealias AllCurrenciesHandler = (([CurrencyItem]?, NSError?) -> ())
+
+    enum CurrencyServiceError: Error {
+        case invalidJSON
+        case invalidDestination
+    }
+
+    typealias ExchangeRateHandler = ((Float?, Error?) -> ())
+    typealias AllCurrenciesHandler = (([CurrencyItem]?, Error?) -> ())
     private let endpoint = "http://apilayer.net/api/%@?%@"
     private let accessKey = "access_key=a836973956f464d8548d51d0c3194571"
+   
     struct CurrencyItem {
         let key: String
         let name: String
     }
     
     func allCurrencies(completion: @escaping AllCurrenciesHandler) {
-        guard let url = listEndpoint else {
-            print("Error: cannot create URL")
-            return
-        }
-        let urlRequest = URLRequest(url: url)
         
-        let session = URLSession.shared
-        let task = session.dataTask(with: urlRequest) {
-            (data, response, error) in
-            // check for any errors
-            guard error == nil else {
-                print(error!)
-                completion(nil, error as! NSError)
-                return
-            }
-            
-            // make sure we got data
-            guard let responseData = data else {
-                print("Error: did not receive data")
-                completion(nil, nil)
-                return
-            }
-            guard let response = try? JSONSerialization.jsonObject(with: responseData, options: [])
-                as? [String: Any] else {
-                    print("error trying to convert data to JSON")
-                    completion(nil, nil)
+        Alamofire.request(listEndpoint)
+            .responseJSON { response in
+                    guard response.result.error == nil else {
+                    completion(nil, response.result.error)
                     return
-            }
-            guard let currencyDict = response?["currencies"] as? [String: String] else {
-                print("error trying to convert data to JSON")
-                completion(nil, nil)
-                return
-            }
-            
-            let currencies = currencyDict.map({ (key: String, value: String) in
-                return CurrencyItem(key: key, name: value)
-            })
-            
-            completion(currencies, nil)
+                }
+                
+                guard let json = response.result.value as? [String: Any], let currencyDict = json["currencies"] as? [String: String] else {
+                    completion(nil, CurrencyServiceError.invalidJSON)
+                    return
+                }
+                
+                let currencies = currencyDict.map({ (key: String, value: String) in
+                    return CurrencyItem(key: key, name: value)
+                })
+                
+                completion(currencies, nil)
         }
-        task.resume()
     }
     
-    func exchangeRate(destination: String, completion: ExchangeRateHandler)  {
-        
+    func exchangeRate(destination: String, completion: @escaping ExchangeRateHandler)  {
+        let endpoint = String(format: "%@&currencies=%@", liveEndpoint, destination)
+        Alamofire.request(endpoint)
+            .responseJSON { response in
+                guard response.result.error == nil else {
+                    completion(nil, response.result.error)
+                    return
+                }
+                
+                guard let json = response.result.value as? [String: Any], let quotesDict = json["quotes"] as? [String: Float] else {
+                    completion(nil, CurrencyServiceError.invalidJSON)
+                    return
+                }
+                
+                guard let rate = quotesDict[String(format: "USD%@", destination)] else {
+                    completion(nil, CurrencyServiceError.invalidDestination)
+                    return
+                }
+                completion(rate, nil)
+        }
     }
 
-    var listEndpoint: URL? {
-        return URL(string: String(format: endpoint, "list", accessKey))
+    var listEndpoint: String {
+        return  String(format: endpoint, "list", accessKey)
     }
+    
+    var liveEndpoint: String {
+        return  String(format: endpoint, "live", accessKey)
+    }
+    
 }

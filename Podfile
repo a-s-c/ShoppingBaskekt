@@ -12,10 +12,12 @@ end
  
 target 'ShoppingBasket' do
    	shared_pods
+    pod 'Alamofire', '4.4.0'
 	project 'ShoppingBasket/ShoppingBasket.xcodeproj'
 end
 
 target 'ShoppingBasketTests' do
    	shared_pods
+    pod 'OHHTTPStubs/Swift', '6.0.0'
     project 'ShoppingBasket/ShoppingBasket.xcodeproj'
 end
