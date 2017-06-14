@@ -15,7 +15,11 @@ struct ProductItem {
     private (set) var quantity: Int
 }
 
-class OrderingScene: NSObject {
+protocol Billable {
+    var total: Float {get}
+}
+
+class OrderingScene: NSObject, Billable {
     private let catalog: ProductCatalog
     private let basket: Basket
     
