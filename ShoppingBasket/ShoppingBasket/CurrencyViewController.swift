@@ -61,12 +61,7 @@ class CurrencyViewController: UITableViewController {
     
     override  func tableView(_ tableView: UITableView, didSelectRowAt
         indexPath: IndexPath){
-//        for indexPath in self.tableView.indexPathsForVisibleRows ?? [] {
-//            let cell = tableView.cellForRow(at: indexPath)
-//            cell?.accessoryType = .none
-//        }
-//        let cell = tableView.cellForRow(at: indexPath)
-//        cell?.accessoryType = .checkmark
+        presenter.didSelectRowAt(in: indexPath.row)
     }
 
 }
@@ -75,8 +70,8 @@ extension CurrencyViewController : CurrencyView {
     
     func reloadData() {
         DispatchQueue.main.async {
-            self.tableView.reloadData()
-           // self.totalLabel.text = String(format: self.totalTextTemplate, self.presenter.total)
+        self.tableView.reloadData()
+           self.totalLabel.text = String(format: self.totalTextTemplate, self.presenter.total)
         }
     }
 }

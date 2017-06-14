@@ -21,6 +21,7 @@ class CurrencyPresenter: NSObject {
     private let defaultCurrency = "USD"
     private var currencies: [CurrencyService.CurrencyItem] = []
     private var selectedCurrency: String
+    private var localCurrency: Float
    
     private let bill: Billable
     private let currencyService: CurrencyService
@@ -30,6 +31,7 @@ class CurrencyPresenter: NSObject {
     
     init(bill: Billable, currencyService: CurrencyService) {
         self.bill = bill
+        self.localCurrency = self.bill.total
         self.currencyService = currencyService
         self.selectedCurrency = defaultCurrency
     }
@@ -47,23 +49,40 @@ class CurrencyPresenter: NSObject {
         })
     }
     
-    public func numberOfSections() -> Int {
+    func numberOfSections() -> Int {
         return 1
     }
     
-    public func numberOfRows(in section: Int) -> Int {
+    func numberOfRows(in section: Int) -> Int {
        return currencies.count
     }
     
-    public func dataForRowAt(in row: Int) -> CurrencyPresenter.CurrencyData {
+    func dataForRowAt(in row: Int) -> CurrencyPresenter.CurrencyData {
         let currencyItem = currencies[row]
         
         return CurrencyData(name: currencyItem.name, isSelected: currencyItem.key == selectedCurrency)
     }
     
-    var total: String {
-        return String(format: "%.2f (%@)", selectedCurrency, bill.total)
+    func didSelectRowAt(in row: Int) {
+        let currencyItem = currencies[row]
+        self.selectedCurrency = currencyItem.key
+        self.exchange(destination: currencyItem.key)
+        view?.reloadData()
     }
     
+    var total: String {
+        return String(format: "%.2f (%@)", selectedCurrency, self.localCurrency)
+    }
+    
+    private func exchange(destination: String) {
+        self.currencyService.exchangeRate(destination: destination) { (rate, error) in
+            guard error == nil else {
+                // could not load exchange rate
+                return
+            }
+            self.localCurrency = self.bill.total * rate!
+            self.view?.reloadData()
+        }
+    }
     
 }
