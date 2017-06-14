@@ -6,7 +6,7 @@
 //  Copyright © 2017 Alexander Schacht. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 protocol OrderingView: class {
     func reloadData()

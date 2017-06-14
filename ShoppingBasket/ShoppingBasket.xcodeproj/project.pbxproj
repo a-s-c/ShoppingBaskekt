@@ -10,6 +10,7 @@
 		4A44F7D11EEF086700774617 /* CurrencyServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A44F7D01EEF086700774617 /* CurrencyServiceTests.swift */; };
 		4A44F7D31EEF08F800774617 /* currencylayer-list-response.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A44F7D21EEF08F800774617 /* currencylayer-list-response.json */; };
 		4A44F7D61EEF334A00774617 /* currencylayer-live-response.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A44F7D51EEF334A00774617 /* currencylayer-live-response.json */; };
+		4A44F7D81EF1233F00774617 /* CurrencyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A44F7D71EF1233F00774617 /* CurrencyPresenter.swift */; };
 		4A5A75A61EE93F7600ECD2CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5A75A51EE93F7600ECD2CB /* AppDelegate.swift */; };
 		4A5A75AB1EE93F7600ECD2CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A5A75A91EE93F7600ECD2CB /* Main.storyboard */; };
 		4A5A75AD1EE93F7600ECD2CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A5A75AC1EE93F7600ECD2CB /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		4A44F7D01EEF086700774617 /* CurrencyServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyServiceTests.swift; sourceTree = "<group>"; };
 		4A44F7D21EEF08F800774617 /* currencylayer-list-response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "currencylayer-list-response.json"; sourceTree = "<group>"; };
 		4A44F7D51EEF334A00774617 /* currencylayer-live-response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "currencylayer-live-response.json"; sourceTree = "<group>"; };
+		4A44F7D71EF1233F00774617 /* CurrencyPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyPresenter.swift; sourceTree = "<group>"; };
 		4A5A75A21EE93F7600ECD2CB /* ShoppingBasket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingBasket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A5A75A51EE93F7600ECD2CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A5A75AA1EE93F7600ECD2CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				4A635C101EEC1C10005EF921 /* ProductItemCell.swift */,
 				4A635C121EEC2A66005EF921 /* CurrencyViewController.swift */,
 				4A635C141EED7236005EF921 /* CurrencyService.swift */,
+				4A44F7D71EF1233F00774617 /* CurrencyPresenter.swift */,
 			);
 			path = ShoppingBasket;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A86A26D1EE9433800277BC6 /* Product.swift in Sources */,
+				4A44F7D81EF1233F00774617 /* CurrencyPresenter.swift in Sources */,
 				4A86A2791EE952AF00277BC6 /* OrderingScene.swift in Sources */,
 				4A635C0D1EEBD9BA005EF921 /* SwinjectStoryboard+Setup.swift in Sources */,
 				4A86A27D1EE975AE00277BC6 /* OrderingViewController.swift in Sources */,
