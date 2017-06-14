@@ -22,15 +22,28 @@ extension SwinjectStoryboard {
         
         defaultContainer.register(OrderingScene.self) {r in
             return OrderingScene(productCatalog: r.resolve(ProductCatalog.self)!)
-        }
+        }.inObjectScope(.container)
         
         defaultContainer.register(OrderingPresenter.self) {r in
             return OrderingPresenter(orderingScene: r.resolve(OrderingScene.self)!)
         }
-
+        
+        defaultContainer.register(CurrencyService.self) {r in
+            return CurrencyService()
+        }
+        
+        defaultContainer.register(CurrencyPresenter.self) {r in
+            return CurrencyPresenter(bill: r.resolve(OrderingScene.self)!, currencyService: r.resolve(CurrencyService.self)!)
+        }
         
         defaultContainer.storyboardInitCompleted(OrderingViewController.self) {r, c in
             c.presenter = r.resolve(OrderingPresenter.self)!
         }
+        
+        defaultContainer.storyboardInitCompleted(CurrencyViewController.self) {r, c in
+            c.presenter = r.resolve(CurrencyPresenter.self)!
+        }
+        
+        
     }
 }

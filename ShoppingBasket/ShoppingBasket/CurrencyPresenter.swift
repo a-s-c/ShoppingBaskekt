@@ -18,17 +18,20 @@ class CurrencyPresenter: NSObject {
         let name: String
         let isSelected: Bool
     }
-    
+    private let defaultCurrency = "USD"
+    private var currencies: [CurrencyService.CurrencyItem] = []
+    private var selectedCurrency: String
+   
     private let bill: Billable
     private let currencyService: CurrencyService
-    private var currencies: [CurrencyService.CurrencyItem] = []
-    private var selectedCurrency: CurrencyService.CurrencyItem?
+    
     
     weak var view: CurrencyView?
     
     init(bill: Billable, currencyService: CurrencyService) {
         self.bill = bill
         self.currencyService = currencyService
+        self.selectedCurrency = defaultCurrency
     }
     
     func viewDidLoad() {
@@ -39,7 +42,7 @@ class CurrencyPresenter: NSObject {
             }
             self.currencies.removeAll()
             self.currencies += currencyItems!
-            self.selectedCurrency = self.defaultCurrency
+            self.currencies = self.currencies.sorted(by: { $0.name < $1.name })
             self.view?.reloadData()
         })
     }
@@ -53,14 +56,14 @@ class CurrencyPresenter: NSObject {
     }
     
     public func dataForRowAt(in row: Int) -> CurrencyPresenter.CurrencyData {
-        let currencyItem = currencies[0]
-        let isSelected = selectedCurrency != nil && currencyItem.key == selectedCurrency!.key
+        let currencyItem = currencies[row]
         
-        return CurrencyData(name: currencyItem.name, isSelected: isSelected)
+        return CurrencyData(name: currencyItem.name, isSelected: currencyItem.key == selectedCurrency)
     }
     
-    private var defaultCurrency: CurrencyService.CurrencyItem {
-        return currencies.first {$0.key == "USD"}!
+    var total: String {
+        return String(format: "%.2f (%@)", selectedCurrency, bill.total)
     }
+    
     
 }
